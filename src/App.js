@@ -2,6 +2,14 @@ import React from "react";
 import "./styles.css";
 import axios from "axios";
 import Card from "./components/Card";
+import styled from "styled-components";
+
+// CardFlex = styled.div`
+//   display: flex;
+//   border: 1px solid red;
+//   flex-wrap: row;
+
+// `
 
 class App extends React.Component {
   constructor() {
@@ -40,7 +48,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Card cardInfo={this.state.cardInfo} following={this.state.following} />
+        <div>
+          <Card
+            cardInfo={this.state.cardInfo}
+            following={this.state.following}
+          />
+        </div>
       </div>
     );
   }
