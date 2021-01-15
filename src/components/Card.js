@@ -1,13 +1,25 @@
 import React from "react";
 
-const Card = (props) => {
+const Card = ({ cardInfo, following }) => {
   return (
     <div>
-      <img width="100px" src={props.userCard.avatar_url} />
-      <p>name: {props.userCard.name}</p>
-      <p>login: {props.userCard.login}</p>
-      <p>location: {props.userCard.location}</p>
-      <p>bio: {props.userCard.bio}</p>
+      <div>
+        <img width="100px" src={cardInfo.avatar_url} />
+        <p>name: {cardInfo.name}</p>
+        <p>login: {cardInfo.login}</p>
+        <p>location: {cardInfo.location}</p>
+        <p>bio: {cardInfo.bio}</p>
+      </div>
+
+      <div>
+        {following.map((item, i) => (
+          <div>
+            <img width="100px" src={item.avatar_url} />
+            <p>login: {item.login}</p>
+            <p>url: {item.url}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

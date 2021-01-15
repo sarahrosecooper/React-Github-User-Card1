@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cardInfo: {}
+      cardInfo: {},
+      following: []
     };
   }
 
@@ -21,15 +22,25 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+      });
+    axios
+      .get("https://api.github.com/users/sarahrosecooper/following")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          following: response.data
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
       });
   }
 
   render() {
     return (
       <div>
-        <h1>This is the App Component</h1>
-        <Card userCard={this.state.cardInfo} />
+        <Card cardInfo={this.state.cardInfo} following={this.state.following} />
       </div>
     );
   }
